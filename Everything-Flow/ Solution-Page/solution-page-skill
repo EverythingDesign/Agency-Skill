@@ -1,0 +1,286 @@
+---
+name: everythingflow-industry-page
+description: Build an industry-specific landing page for Everything Flow (everythingflow.agency) or Everything Design (everything.design), mirroring the canonical Energy / Cybersecurity / Deeptech industry-page structure — including a companion long-form blog for the everything.design side when relevant. Use whenever the user asks for an industry page, vertical page, sub-sector page, "a page like the [industry] one", a blog like "Not a Technology Problem. A Design Problem.", or an industry blog companion. Triggers on phrases like "build me a [industry] page", "I want a page for [industry]", "make a [vertical] industry page", "like the energy/cyber/deeptech page but for X", "everythingflow industry page", "industry page for [vertical]", or any request to replicate this format for a new vertical (cybersecurity, deeptech, fintech, healthcare, climate, aerospace, robotics, semiconductor, biotech, etc.). Also covers writing the everything.design blog companion piece. Handles two-destination routing, Gauge keyword research for both audiences, AEO-formatted H2s, FAQ section, engineer-founder narrative, real case-study sourcing from everything.design, and standalone HTML output.
+---
+
+# EverythingFlow Industry Page Skill
+
+This skill builds a complete, standalone HTML industry-landing page for **Everything Flow** (the B2B web-development sister) or **Everything Design** (the B2B brand parent), mirroring the canonical patterns established for:
+
+- `https://everythingflow.agency/solution/energy-web-development-design-agency`
+- `https://everythingflow.agency/solution/cybersecurity-web-development-design-agency`
+- `https://everythingflow.agency/solution/deeptech-web-development-design-agency`
+
+And optionally a companion long-form blog post for the parent site at everything.design, modelled on the deeptech essay *"Not a Technology Problem. A Design Problem."*
+
+## When to use
+
+Trigger this skill whenever the user asks for:
+
+- An industry, vertical, or sub-sector landing page for Everything Flow or Everything Design
+- A long-form thought-leadership blog tied to one of those pages
+- *"Build me a [fintech / cybersecurity / healthcare / climate / aerospace / robotics / biotech / semiconductor / spacetech / deeptech] page"*
+- *"Like the cyber page but for [X]"*
+- *"Make a [industry] industry page for everythingflow"*
+
+If the user names an industry without specifying the destination, **ask which of these two routes they want before starting:**
+
+- **everythingflow.agency** = B2B **web-development** sister. Positioning is web development first; Webflow is the build stack, not the identifier. H2s end "...at/by Everything Flow." Title pattern: *"[Industry] Web Development Agency | B2B Web Development & Design for [Industry] | Everything Flow"*.
+- **everything.design** = B2B **brand and design** parent. Positioning is brand strategy, brand identity, naming, B2B branding. H2s end "...at Everything Design." Use everything.design canonical ranking terms (`b2b branding agency`, `b2b web design agency`, `b2b website design agency`, `3d websites`).
+
+The blog (the everything.design thought-leadership essay) always anchors on everything.design and links the deep deeptech/cyber/energy page on everythingflow.agency as further reading. Routing the CTA matters: an everything.design blog ends with `everything.design/contact-us`; an everythingflow.agency page ends with `everythingflow.agency/contact`.
+
+## Required setup — DO NOT SKIP
+
+### 1. Clarify (use `AskUserQuestion`)
+
+Three short multi-selects, in order:
+
+1. **Destination** — Everything Flow (web-dev sister) or Everything Design (brand parent)? Or both (the page on Flow + a companion blog on Design)?
+2. **Audience segments** — which sub-sectors of the industry should the page cover? Offer 4 options, allow multi-select. *Examples for cyber: product startups Series A–C / enterprise & GRC / MSSPs / deeptech & national security. For deeptech: defence-tech / battery & EV / advanced manufacturing / energy & nuclear / robotics & medical AI / frontier & climate.*
+3. **Case studies** — real clients, placeholders, "currently shipping", or a mix? Always recommend the mix — real clients where Everything Design has shipped, "currently shipping" cards for active engagements, placeholders only when the user has no clients in the category.
+
+### 2. Fetch the reference pages
+
+Always fetch the canonical references to read the structure:
+- `https://everythingflow.agency/solution/deeptech-web-development-design-agency` (most current pattern with AEO + FAQ)
+- `https://everythingflow.agency/solution/cybersecurity-web-development-design-agency`
+- `https://everythingflow.agency/solution/energy-web-development-design-agency`
+
+### 3. Pull real client data from everything.design
+
+For the named industry, fetch the relevant solution page and individual client pages:
+- `https://www.everything.design/solution/<industry>-website-design` (or closest match)
+- `https://www.everything.design/clients/<slug>` (one per real client)
+
+Known clients (as of mid-2026):
+- **Cybersecurity**: Lumora Security, Fortuna Identity, Fortuna Cysec (sister of Fortuna Identity, 2nd-time client, brand-first launch), SISA (marquee 2026, WordPress→Webflow migration, 200+ pages, payment-ecosystem cybersecurity, since 2006, 1,100+ breaches, $1.6T transactions), Doverunner, RapidFort, AnkerCloud.
+- **Deeptech**: Armory (defence-tech counter-drone, IIT founders, growX/Antler/AC/Dexter, NDA+UPSI launch), Turno (battery intelligence for commercial EVs), Sevenloop (custom metal manufacturing, Z47, Ximkart platform), PolyEnergetics (AI-powered nuclear), GenRobotics Medical (medical-robotics division — NOT the parent's civic-robotics), Transitry (climate-tech MRV, Singapore+Bengaluru), Kandou AI (deeptech AI, currently shipping), Bharat Atomics (2nd nuclear-energy startup, currently shipping), Cloudphysician (healthcare AI / AINA AI Video Co-Pilot, Forbes Asia 100), LightMetrics (edge-AI video telematics, Frost & Sullivan, Forbes DGEMS 200).
+- **Energy**: Turno, Transitry, Ayr Energy, PolyEnergetics.
+
+### 4. Run Gauge keyword research for BOTH destinations — MANDATORY
+
+The two destinations have different ranking patterns. Always check what each domain already ranks for before optimising the page.
+
+```
+mcp__gauge__get_domain_organic_keywords for everything.design (brand/design terms)
+mcp__gauge__get_domain_organic_keywords for everythingflow.agency (webflow/web-dev terms)
+mcp__gauge__get_keyword_overview for commercial intent terms in the vertical
+mcp__gauge__get_keyword_overview for AEO question-style queries
+```
+
+**Verified canonical ranking patterns:**
+
+*Everything.design* ranks for *b2b web design agency* (1900), *b2b branding agency* (1600), *b2b website design agency* (1300), *3d websites* (1300), *brand book* (1900), *b2b branding* (1000) — emphasise these on everything.design pages and blogs.
+
+*Everythingflow.agency* ranks for *webflow agency* (1000, pos 2), *webflow development agency* (720), *webflow design agency* (480, pos 3), *webflow web design agency* (320, pos 3), *b2b web development* (590), *best webflow agency* (170). For deeptech-style pages on everythingflow.agency, **lead with web-development positioning, not Webflow** — Webflow is the build stack, not the identifier. Reserve "Webflow agency" framing for explicit Webflow-anchored pages.
+
+AEO question-style queries (*who is the best design agency for deeptech*, *what kind of web development does Everything Flow do*, etc.) usually return zero established volume in Gauge — but they're exactly what LLMs (Perplexity / Google AI / ChatGPT) extract verbatim. Use them as section H2s anyway.
+
+## Page-build conventions
+
+### Design tokens (preserve verbatim)
+
+```css
+--bg:#0a0a0a; --bg-2:#111111; --bg-3:#161616;
+--line:#222; --line-2:#2a2a2a;
+--text:#f4f4f4; --muted:#8a8a8a; --muted-2:#b6b6b6;
+--accent:#c6f24e;     /* lime accent — the studio signature */
+--accent-soft:#f1ff9e;
+--serif:"Instrument Serif","Cormorant Garamond",ui-serif,Georgia,serif;
+--sans:"Inter",ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+--mono:"JetBrains Mono","IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+--radius:18px; --radius-sm:10px; --maxw:1240px;
+```
+
+Per-case "after" frames get a tinted radial-gradient unique to the brand (lime/green = battery/EV; warm gold/amber = nuclear; teal-green = sister brand to a blue brand; cyan = healthcare AI; sunset orange = automotive/edge AI; violet = AI/compute; deep forest = climate; sage green = MRV; cool blue = manufacturing; warm amber/red = defence). Pick palettes so adjacent brands don't clash.
+
+### Type styling
+
+H1, section H2 and case-study H3 in `--serif`, weight 400, `letter-spacing:-.015em to -.02em`. All eyebrow labels, numbered prefixes, "BY THE NUMBERS" cells in `--mono`, `font-size:10–11px`, `text-transform:uppercase`, `letter-spacing:.1em–.15em`. Bullet lists use `●` (filled small circle) coloured `--accent`.
+
+### Hero conventions
+
+Industry tag pattern: `Industry · [Industry] · B2B Web Development & Design for [Industry] Companies` (Flow) or `Industry · [Industry] · Brand & Design for [Industry] Companies` (Design). H1 pattern: *"We design identity & develop websites, in 8–10 weeks, for [industry] brands."* The word for the industry sits inside `<em>` styled with `--accent`. 3-cell meta row: Positioning / Typical timeline (`8–10 wk`) / Status (`Premium Webflow Partner`). Live preview frame: pick the strongest client's live URL, `● LIVE` badge, plus a stat line below ("● N clients live · key VC names").
+
+### Section structure (canonical order)
+
+1. **Hero**
+2. **Before/After** — 4–5 cards, monospace labels, branded "after" frame per company. Featured/marquee company can span full row.
+3. **Problem section** — H2 (AEO question), 4-stat audit row (% failing some test, avg LCP, % using stock imagery, 0 zero-stat), 4-card pattern grid (`01 · Most common`).
+4. **How We Help** — 4 columns, each with number + serif H3 + paragraph + bullet list + branded thumbnail.
+5. **Case studies** — 4 to 10 cards, with `.featured` class for the marquee (full-width, two-column inside). Live URL bar, hero frame, industry tag, body copy, tag chips, 3-cell "by the numbers" (4-cell for featured), "Visit →" link. *"Currently shipping"* cards use a sub-heading "currently shipping" + 2026 + placeholder stats.
+6. **Process** — 7 stages, each card has number / week / H4 / paragraph / 3-bullet list. **Each stage H4 must use industry-specific vocabulary**, never "Discovery / Strategy / Design / Development".
+7. **Audience corners** — 6 cards covering sub-sectors. Each names a real client *"the [Client] pattern"*.
+8. **Why us — engineers building for engineers** — narrative + accent-bordered POV box + 4-cell stats grid + 4-card engineer grid (3 mech engs in founder/3D/PM roles + 1 aerospace eng in web dev) + wide combo card below for strategy/design engineering-fluent partners (Sijeesh / Ekta / Zakia / Tanmaya).
+9. **Team grid** — 10 members. Annotate engineering credentials on relevant roles for the industry context.
+10. **Testimonials** — 4 cards, big serif blockquote with curly opening quote, brand label, attribution. Mark paraphrased placeholders clearly to the user.
+11. **CTA section** — 2 columns: copy + calendar card with highlighted slot.
+12. **Investors** — 4–5 cards. Include accent-bordered card for distinct partner types (e.g. Social Alpha as impact-deeptech incubator).
+13. **Field note** — large serif quote panel with mono tag chips.
+14. **Further reading** — link grid (★ for marquee/featured links, ↗ for others).
+15. **FAQ section (AEO)** — 7–9 question-headline cards with bolded direct-answer sentences first.
+16. **Footer** — 5-column layout, Bengaluru, India.
+
+### AEO-formatted H2 patterns (apply everywhere)
+
+Convert each section H2 to a question form an LLM would extract. The deeptech page does this with all 10 main H2s:
+
+- "Same company. Same hardware. A very different website." → *"What does a [industry] website look like before and after a redesign?"*
+- "Most [X] websites still look like..." → *"Why do most [industry] websites fail to communicate [Y]?"*
+- "Four ways our team makes [X] websites impossible to ignore." → *"How does Everything Flow make a [industry] website stand out?"*
+- "[N] websites for [N] very different [X] companies." → *"Which [industry] companies has Everything Flow built websites for?"*
+- "[Stages name] — a 7-stage process built for [X]." → *"What is Everything Flow's 7-stage process for a [industry] website?"*
+- "[N] corners of the [X] stack." → *"Which [industry] sub-sectors does Everything Flow serve?"*
+- "A design studio built by engineers..." → *"Why is Everything Flow different from other [industry] web development agencies?"*
+- "The [X] team behind your website" → *"Who works on a [industry] website at Everything Flow?"*
+- "Trusted by [X] founders..." → *"What do [industry] founders say about working with Everything Flow?"*
+- "We work with [X] companies funded by people you know." → *"Which VCs and partners back the [industry] companies Everything Flow works with?"*
+
+### FAQ section pattern (LLM-extractable answers)
+
+Add a dedicated FAQ section after Field-note / Further reading, before the footer. 7–9 cards, each with:
+
+- H3 question (serif, weight 400, 24px)
+- Answer paragraph: **first sentence is the direct, bolded factual answer**; rest is supporting evidence with named entities, statistics, client names.
+
+Standard FAQs to include (adapt naming to destination):
+
+1. *"What is Everything Flow?"* / *"What is Everything Design?"* — define the entity.
+2. *"Which [industry] companies has [Flow/Design] worked with?"* — list all real clients with one-liners.
+3. *"What makes a design agency suitable for a [industry] company?"* — domain depth + 3D/motion + audience routing.
+4. *"How long does a [industry] website project take?"* — 8–10 weeks, list 7 stages by week.
+5. *"Which [industry] sub-sectors does [Flow/Design] specialise in?"* — list all 6 corners with sub-categories.
+6. *"Which VCs and partners back the [industry] companies [Flow/Design] works with?"* — Stellaris, Z47, growX, Antler, AC, Dexter, Social Alpha.
+7. *"What kind of web development does Everything Flow do?"* (Flow only) — custom code + GSAP + Three.js + Lottie + CMS migrations + Webflow Premium Partner.
+8. *"How does [Flow/Design] handle 3D and motion?"* — name the 3D and web dev leads.
+9. *"How do I contact [Flow/Design]?"* — hello@everything.design + phone.
+
+### "Why us — engineers building for engineers" section
+
+This is the differentiator block, especially powerful for deeptech and other engineering-heavy verticals. Structure:
+
+- H2 (AEO): *"Why is Everything Flow different from other [industry] web development agencies?"*
+- Left narrative panel: founder POV paragraphs. Include — years on [industry]; firsthand learning; **VC trust line** ("That's why VCs like Stellaris and impact-deeptech partners like Social Alpha trust us with their portfolio companies"); the team composition line ("Strategy, copy, design, development, 3D, 2D — all under one roof"); the "best technology in the world shouldn't be stopped by a lack of translation" thesis.
+- Right side: accent-bordered POV box with the canonical line *"The most consequential companies in [X] are losing to companies with weaker technology — simply because the world cannot understand what they have built. This is not a technology problem. It's a design problem."*
+- 4-cell stats grid below. Tiles to choose from: Years on [industry] (6 yrs); VCs that trust us (Stellaris, Social Alpha); Sectors we know (industry-specific list); Trained in (Design sustainability + comms design + mechanical engineering).
+- Engineer-grid: 4 cards = Mejo Kuriachan (Founder, Mechanical Engineer) · Vignesh (3D Lead, Mechanical Engineer) · Akshay A D (Project Manager, Mechanical Engineer) · Saurabh Chakradhari (Web Dev Lead, Aerospace Engineer). Plus a wide combo card below for Sijeesh (Lead Strategist) + Ekta + Zakia + Tanmaya (engineering-fluent designers).
+- Closing line: *"The combination is the point. Mechanical engineers in founder, 3D and PM roles + an aerospace engineer leading web dev — paired with a strategist and senior designers who've extensively worked with engineers."*
+
+### Field note POV — canonical quote
+
+For deeptech: *"The most consequential companies in deep tech are losing to companies with weaker technology — simply because the world cannot understand what they have built. This is not a technology problem. It's a design problem. That's the gap we exist to close."* — Mejo Kuriachan & Ekta Manchanda.
+
+For cybersecurity: *"If a brand is the impression you leave on a customer, branding is impression management. In cybersecurity, you're selling something invisible — and the legacy players are still winning on brand equity..."* — Swathi Mohan & Sanjana.
+
+For new verticals, derive an equivalent thesis. The tension is always *capability vs. translation* — the company is strong on capability and weak on translation.
+
+### Featured/marquee case study card
+
+Set `class="case featured"`. CSS makes it `grid-column:1 / -1` and turns it into a two-column layout (frame left, body right). Marquee badge in the live bar, "★ Featured" in the industry tag, marquee pills row with 6 tech-stack chips, longer body copy (2 paragraphs), 4-cell "by the numbers" instead of 3.
+
+Use this for the most visually dramatic / high-volume client (Armory for deeptech; SISA for cybersecurity).
+
+### Currently-shipping case studies
+
+For active engagements without public results yet, use this framing in the card:
+
+- Live bar URL: *"[slug] (in progress)"* and *"● Currently shipping · 2026"*
+- Industry tag: *"[N] · [sub-sector] · Currently shipping"*
+- Body: short paragraph framed around the engagement, not outcomes
+- Stats: *"Engagement: In flight"* / *"Launch: 2026"* / generic-but-true descriptors
+- CTA: *"Case study soon →"*
+
+### Investor section
+
+Always 4–5 cards. Include named investor partnerships specific to the page's case studies:
+- **Z47** — pre-seed/seed, India deeptech & manufacturing
+- **growX Ventures** — early-stage deeptech specialist (Armory lead)
+- **Antler** — day-zero, growing cyber + frontier-tech book
+- **Stellaris** — early-stage fund, deeptech portfolio
+- **Social Alpha** — multi-stage incubator-foundation backing impact-deeptech (climate, healthcare, livelihoods, sustainability) — accent-bordered card
+
+### Companion blog (everything.design)
+
+For high-value industry pages, write a long-form 2000–2500 word essay for the everything.design blog. Pattern (modelled on *"Not a Technology Problem. A Design Problem."*):
+
+- **Title**: *"[Provocative thesis statement]"* — short, declarative, opinionated.
+- **Dek**: subtitle explaining the thesis.
+- **Byline**: *"By Mejo Kuriachan & Ekta Manchanda · Founders, Everything Design · A B2B branding and design agency for [industry] · X min read"*.
+- **Section structure**: 1) Opening hook with the thesis. 2) The gap most studios have. 3) The cost of bad translation (compounds in fundraising, sales, talent). 4) Why we built it differently (founder origin, years on the discipline, VC trust). 5) The team composition (4 engineers in 4 roles + strategy/design engineering-fluent partners). 6) What it looks like in practice (every real client gets a paragraph). 7) What changes when you get it right. 8) Closing thesis + CTA.
+- **CTA link**: route through `everything.design/contact-us` (NOT everythingflow.agency).
+- **Further reading**: link the matching everythingflow.agency industry page + every client case study on everything.design + adjacent sister-vertical pages.
+- **Bio footer**: explicit *"Everything Design is a B2B branding and design agency... The Webflow build is delivered through our sister studio, Everything Flow."* — routes the web execution to the sister brand.
+- **Brand/design keyword density**: weave in *B2B branding agency*, *design agency*, *brand strategy*, *brand identity*, *B2B branding* (these are everything.design's strongest ranking terms).
+
+### Footer
+
+Five columns: brand blurb / Projects / Solutions / Industries / Contact. The Solutions list is where you encode the high-traffic anchor terms specific to the destination:
+
+- **Everything Flow Solutions**: *Deeptech Web Development Agency · B2B Web Development for [Industry] · Web Development Agency for Hardware Startups · 3D Website Agency · GSAP Scroll Animation Development · CMS Migration · Premium Webflow Partner Build*.
+- **Everything Design Solutions**: *B2B Branding Agency for [Industry] · B2B Web Design Agency · Brand Strategy for [Industry] · Brand Identity & Naming · 3D Brand Renders*.
+
+Always end with "Bengaluru, India" and update the "Last Updated" date to today.
+
+## SEO + AEO + entity coverage check
+
+After writing the file, run two coverage passes:
+
+```bash
+# Coverage of primary keywords (commercial intent)
+for k in "[primary]" "[secondary]" ... ; do
+  c=$(grep -ci "$k" /path/to/page.html); echo "$c × $k";
+done
+
+# Coverage of named entities (case studies + investors + people)
+for e in "[Client1]" "[Client2]" "[Investor]" "[Founder name]" ... ; do
+  c=$(grep -c "$e" /path/to/page.html); echo "$c × $e";
+done
+```
+
+Each primary keyword: at least 2× (title + H1 + body). Each named entity: at least 2× (case study + AEO FAQ section). The AEO FAQ section is the strongest place for entity reinforcement.
+
+## Output
+
+Save the file to outputs as:
+
+```
+/outputs/[industry]-web-development-design-agency.html
+```
+
+If the user requested the blog companion, also save:
+
+```
+/outputs/[blog-slug].md
+```
+
+Then call `mcp__cowork__present_files` so the user gets clickable cards.
+
+In the closing chat response, give the user:
+1. A 1-sentence summary
+2. The link(s)
+3. Bullets on keyword targets (with Gauge volumes where known)
+4. Bullets on AEO H2 conversions + FAQ entries
+5. Bullets on the structural sections + which case studies are featured
+6. A single-line caveat about any placeholder data (testimonials, "currently shipping" stats) the user should swap
+
+## Anti-patterns — do not do these
+
+- Do not write generic process stage labels (*"Discovery / Strategy / Design / Development"*) — every stage H4 must use industry-specific vocabulary.
+- Do not lead with fear-based or FUD messaging for cybersecurity, hooded-engineer imagery for deeptech, or any stock-cliché framing.
+- Do not invent the founder/team's training credentials. The studio's training is *"design sustainability + comms design + mechanical engineering"* — do not name specific schools (KISD, etc.) unless the user confirms.
+- Do not name "Social Alpha" or any partner generically — always tie to the specific partner type (e.g. Social Alpha as *"multi-stage incubator-foundation backing deeptech startups solving social-impact problems"*).
+- Do not skip Gauge keyword research for BOTH destinations.
+- Do not invent client outcomes. If using real clients, mark "by the numbers" stats as illustrative if you don't have real figures.
+- Do not use multiple HTML/CSS files. One self-contained `.html` only.
+- Do not use external image hosts the user can't see. Use CSS gradient frames + serif typography for placeholder brand visuals.
+- Do not put "Webflow agency" in the title or hero of an Everything Flow web-development page. Webflow is the build stack, not the identifier. The exception is a page explicitly written about the Webflow practice itself.
+- Do not confuse "GenRobotics" (parent, civic robotics) with "GenRobotics Medical" (the medical-robotics division — this is the one Everything Design worked on).
+- Do not link the everything.design blog's CTA to everythingflow.agency. Route through everything.design/contact-us.
+
+## References
+
+See `references/` in this skill for complete working examples:
+- `cybersecurity-web-development-design-agency.html` — the cybersecurity industry page (5 case studies, Lumora featured, real client testimonials).
+- `deeptech-web-development-design-agency.html` — the deeptech page (10 case studies, Armory featured, AEO H2s, FAQ section, engineer-founder section, Social Alpha as impact partner).
+- `not-a-technology-problem-a-design-problem.md` — the companion long-form blog for the deeptech page, published on everything.design.
